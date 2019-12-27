@@ -1,0 +1,10 @@
+<svg width="100%" height="300px">
+<defs>
+       <filter id="filter1" x="0" y="0">
+           <feOffset result="offOut" in="SourceAlpha" dx="-5" dy="-5" />
+           <feGaussianBlur result="blurOut" in="offOut" stdDeviation="3" />
+           <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+    </filter>
+</defs>
+<path transform="translate(10, 10)" filter="url(#filter1)" stroke-linejoin="round" stroke-linecap="round" stroke="red" stroke-opacity="1" stroke-width="5" fill="none" class="leaflet-clickable" d="M1063 458L1055 428L1034 433L1030 421L1017 423L911 452L895 455L885 441L859 424L809 410L788 394L774 377L744 309L730 313L727 304L669 319L599 341L596 331L491 364L488 357L498 343L490 343L450 352L417 256L371 270L366 253L355 256L351 242L217 282L194 210L191 196L166 113L45 147L44 140L13 150" ></path>
+</svg>

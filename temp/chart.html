@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="width: 500px; height: 300px;">
+        <canvas id="linechart"></canvas>
+    </div>
+    <div style="width: 500px; height: 300px;">
+        <canvas id="barchart"></canvas>
+    </div>
+    <div style="width: 500px; height: 300px;">
+        <canvas id="piechart"></canvas>
+    </div>
+    <script src="./jquery-3.4.1.min.js"></script>
+    <script src="./Chart.min.js"></script>
+    <script>
+        // getContext("2d") 取得 canvas 畫布的 2d 繪圖參數
+        // let line = document.getElementById("linechart").getContext("2d");
+        let line = $("#linechart");
+        let myLineChart = new Chart(line, {
+            type: "line",
+            data: {
+                // 資料區間名稱
+                labels: ["第一期", "第二期", "第三期", "第四期", "第五期"],
+                // 資料集
+                datasets: [{
+                    // 名稱
+                    label: "PHP網頁班",
+                    // 資料
+                    data: [7, 8, 10, 6, 9],
+                    // 線的顏色
+                    borderColor: "#f00",
+                    // 填滿顏色
+                    backgroundColor: "#F63676",
+                    // 是否填滿
+                    fill: false,
+                    // 線的寬度
+                    borderWidth: 5,
+                    // 彎曲程度，0 為直線
+                    lineTension: 0
+                }]
+            },
+            // 設定
+            options: {
+                // 標題
+                title: {
+                    text: "網頁乙級通過人數",
+                    display: true
+                }
+            }
+        })
+
+        let bar = $("#barchart");
+        let myBarChart = new Chart(bar, {
+            type: "bar",
+            data: {
+                // 資料區間名稱
+                labels: ["第一期", "第二期", "第三期", "第四期", "第五期"],
+                // 資料集
+                datasets: [{
+                    // 名稱
+                    label: "PHP網頁班",
+                    // 資料
+                    data: [7, 8, 10, 6, 9],
+                    // 線的顏色
+                    borderColor: "#f00",
+                    // 填滿顏色
+                    backgroundColor: "#F63676",
+                    // 是否填滿
+                    fill: false,
+                    // 線的寬度
+                    borderWidth: 5
+                }]
+            },
+            // 設定
+            options: {
+                // 標題
+                title: {
+                    text: "網頁乙級通過人數",
+                    display: true
+                }
+            }
+        })
+
+        let pie = $("#piechart");
+        let myPieChart = new Chart(pie, {
+            type: "pie",
+            data: {
+                // 資料區間名稱
+                labels: ["網頁班", "影音班", "水電班", "圖文班", "冷凍班"],
+                // 資料集
+                datasets: [{
+                    // 資料
+                    data: [20, 22, 25, 21, 23],
+                    // 線的顏色
+                    borderColor: "#f00",
+                    // 填滿顏色
+                    backgroundColor: ["#F63676", "#f0f", "#0f0", "#00f", "#0ff"],
+                    // 線的寬度
+                    borderWidth: 10
+                }]
+            },
+            // 設定
+            options: {
+                // 標題
+                title: {
+                    text: "泰山職訓學生人數",
+                    display: true
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
