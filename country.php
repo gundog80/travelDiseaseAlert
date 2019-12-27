@@ -214,7 +214,12 @@ $data='{"AF": "Afghanistan",
 		"IC": "Canary Islands (Spain)"
 }';
 	$json = json_decode($data,true);
-	print_r($json);
+	// print_r($json);
+	foreach($json as $k => $v ){
+		$tmp[]=sprintf('%s,%s',$k,$v);
+	}
+	$tmp2=implode(",",$tmp);
+	echo $tmp2;
 
 
 
