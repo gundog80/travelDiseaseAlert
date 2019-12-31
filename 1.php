@@ -36,15 +36,20 @@
 	})
 	//svg滑入滑出end
 
+	// //測試 變色
+	// $('path').on('click',(event)=>{
+	// 	$(event.target).css('fill','red')
+	// 	// $(event.target).removeAttr('filter')
+	// 	// $('#upup').remove()
+	// })
+
 	let news=""
 $(function(){
 	getOpenData();
-	// temp()
-	setTimeout(	temp,3000)
-	setTimeout(	getRow,3000)
+
+	
 
 });
-
 	let getOpenData=function(){
 		//取得opendata
 		let url="https://www.cdc.gov.tw/CountryEpidLevel/ExportJSON"
@@ -54,44 +59,56 @@ $(function(){
 			// console.log(news[0].Source);
 			// console.log(news[0]);
 		})
+		setTimeout(getRow,2500)
+			//等待2.5秒完成後呼叫getRow
 	}
-	let temp= function(){
-		// 測式用
-			console.log(news[0]);
-	}
-
-	let try1=function(){
-		// 測試用，開div
-   console.log("hi")
-	}
-
 	let getRow=function(){
-		// 取得單行資料(若為多國則再分)
-	news.forEach(function temp1(row){
-	// let row = news[0];
-	// console.log(row)
-		// row=JSON.parse(row);
-	severityLevel=row.severity_level;
-	alertDisease=row.alert_disease;
-	countries=row.description;
-	if (countries==""){
-	// 	country=row.areaDesc
-	// 	console.log(country)
-	}else{
-		console.log(countries)
-		setTimeout(
-		countries.split(","),
-		1000
-		)
-		// countries.forEach(function temp2(country){
-		console.log(countries)
+	// 取得單行資料(severityLevel,alertDisease,countries[])
+		news.forEach(function temp1(row){
+		// let row = news[50];
+		//----------
+			severityLevel=row.severity_level;
+			alertDisease=row.alert_disease;
+			countries=row.description;
+			if (countries==""){  		//判別警戒是否是多國，並作相應處理
+				country=row.areaDesc
+				findID();
+				// console.log(country)
+			}else{
+				countries=countries.substring(0,countries.indexOf('-'))
+				// setTimeout(()=>{countriesToArr(countries)
+				// },200)
+				countries=countries.split(",")
+				let getCountry=function(){
+					countries.forEach(function temp2(country){
+						// console.log(country)
+						findID();
+					})
+				}
+				setTimeout(getCountry,50)
+			}
+		})
+	}
+	let findID=function(){}
+	// let writeData=function(){
+	// 	console.log(countries)
+	// 	countries.forEach(function temp2(country){
+	// 		console.log(country)
 
+	// 	})
+
+	}
+
+
+
+
+		// countries.forEach(function temp2(country){
 		// }
 		// )
-	}
+	
 
-	})
-	}
+	// })
+	
 
 
 </script>
