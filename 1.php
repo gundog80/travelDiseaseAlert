@@ -17,13 +17,26 @@
 	?>
 
 </body>
+
 <script src="./jquery-3.4.1.min.js"></script>
+<?php
+?>
+<script>
+	let countryCode=<?php echo json_encode($countryCode); ?>;
+	let countryEn=<?php echo json_encode($countryEn); ?>;
+	let countryCh=<?php echo json_encode($countryCh); ?>;
+	// console.log(countryCode);
+	// console.log(countryEn);
+	// console.log(countryCh);
+	let temp=new Array();
+</script>
+
 <script>
 	//svg滑入滑出
 	let paths =$('path')
 
 	$('path').mouseenter((event)=>{
-		$('.svg').append(`<use id="upup" xlink:href="#${$(event.target).attr('id')}"/>`)
+		// $('.svg').append(`<use id="upup" xlink:href="#${$(event.target).attr('id')}"/>`)
 		$(event.target).attr('transform','translate(-5, -5)')
 		$(event.target).attr('filter',"url(#filter1)")
 		$(event.target).appendTo('svg')
@@ -32,7 +45,7 @@
 	$('path').mouseleave((event)=>{
 		$(event.target).attr('transform','translate(0, 0)')
 		$(event.target).removeAttr('filter')
-		$('#upup').remove()
+		// $('#upup').remove()
 	})
 	//svg滑入滑出end
 
@@ -46,7 +59,7 @@
 	let news=""
 $(function(){
 	getOpenData();
-
+	
 	
 
 });
@@ -89,7 +102,17 @@ $(function(){
 			}
 		})
 	}
-	let findID=function(){}
+	let findID=function(){
+		let temp3=$.inArray(country,countryCh);
+		if(temp3>=0){
+			countryID=countryCode[temp3];
+			console.log("hi")
+			// console.log(countryID)
+		}else{
+			temp[temp.length]=country;
+			console.log(country);
+		}
+	}
 	// let writeData=function(){
 	// 	console.log(countries)
 	// 	countries.forEach(function temp2(country){
@@ -97,7 +120,7 @@ $(function(){
 
 	// 	})
 
-	}
+	// }
 
 
 
